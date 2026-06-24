@@ -383,3 +383,29 @@ document.addEventListener('keydown', (e) => {
 window.odometerOptions = {
   format: '(,ddd).dd' // Enforces the decimal to stay explicitly where intended
 };
+
+
+// ─── VISITOR COUNTER LOGIC ─────────────────────────
+const statCounterEl = document.getElementById('visitor-count-stats');
+const footerCounterEl = document.getElementById('visitor-count-footer');
+
+// Only fetch if at least one of the counters exists on the page
+if (statCounterEl || footerCounterEl) {
+  fetch('https://7eok0ntilf.execute-api.us-east-1.amazonaws.com/prod/count', {
+    method: 'POST', 
+  })
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then(data => {
+      // Update both HTML elements simultaneously with the exact count
+      if (statCounterEl) statCounterEl.textContent = data.count;
+      if (footerCounterEl) footerCounterEl.textContent = data.count;
+    })
+    .catch(error => {
+      console.error('Error fetching visitor count:', error);
+      if (statCounterEl) statCounterEl.textContent = "Offline";
+      if (footerCounterEl) footerCounterEl.textContent = "Offline";
+    });
+}
