@@ -14,7 +14,9 @@ Instead of deploying via the AWS Console, this project was built entirely using 
 
 ## 🏗️ Architecture
 
-![Cloud Resume Architecture](frontend/assets/images/architecture.svg)
+<p align="center">
+  <img src="frontend/assets/images/architecture.svg" alt="Architecture" width="350"/>
+</p>
 
 ### **How it Works**
 1. **Frontend:** The static website (HTML/CSS/JS) is hosted in an **Amazon S3** bucket.
