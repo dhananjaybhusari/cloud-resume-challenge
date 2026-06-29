@@ -14,37 +14,7 @@ Instead of deploying via the AWS Console, this project was built entirely using 
 
 ## 🏗️ Architecture
 
-```mermaid
----
-config:
-  layout: elk
----
-%%{init: {"flowchart": {"curve": "stepBefore"}}}%%
-flowchart LR
-    User(["🌐 Web Browser"]) -- "https://dhananjay.app" --> DNS["☁️ Cloudflare DNS"]
-    DNS -- Routes traffic --> CDN["⚡ CloudFront CDN"]
-    CDN -- Fetches static assets --> S3[("📁 Amazon S3")]
-    User -- JS fetch POST --> API["🚪 API Gateway"]
-    API -- Triggers --> Lambda["⚙️ AWS Lambda"]
-    Lambda -- Reads/Updates --> DDB[("🗄️ DynamoDB")]
-
-     User:::client
-     DNS:::cloudflare
-     CDN:::aws
-     S3:::aws
-     API:::aws
-     Lambda:::aws
-     DDB:::aws
-    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff
-    classDef cloudflare fill:#F38020,stroke:#F38020,stroke-width:2px,color:#fff
-    classDef client fill:#EEEEEE,stroke:#333,stroke-width:2px,color:#000
-    style DNS fill:#333
-    style CDN fill:#002da7
-    style S3 fill:#00C853
-    style API fill:#002da7
-    style Lambda fill:#FF6D00
-    style DDB fill:#2962FF
-```
+![Cloud Resume Architecture](frontend/assets/images/architecture.svg)
 
 ### **How it Works**
 1. **Frontend:** The static website (HTML/CSS/JS) is hosted in an **Amazon S3** bucket.
