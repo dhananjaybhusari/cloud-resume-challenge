@@ -1,7 +1,7 @@
 # 1. S3 Bucket for Website Hosting
 resource "aws_s3_bucket" "portfolio_bucket" {
   # Change this name if you want, but it MUST be globally unique across all of AWS
-  bucket = "dhananjay-portfolio-bucket-2026" 
+  bucket = "dhananjay-portfolio-bucket-2026"
 }
 
 # Block public access to S3 (Security Best Practice - force traffic through CloudFront)

@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "lambda_dynamodb_policy" {
       "dynamodb:GetItem"
     ]
     # Restrict Lambda so it can ONLY touch this specific table
-    resources = [aws_dynamodb_table.visitor_count.arn] 
+    resources = [aws_dynamodb_table.visitor_count.arn]
   }
   statement {
     effect = "Allow"
@@ -94,7 +94,7 @@ resource "aws_lambda_function" "api_handler" {
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "portfolio-api"
   protocol_type = "HTTP"
-  
+
   # CORS Configuration (Allows your frontend to talk to the API)
   cors_configuration {
     allow_origins = ["*"] # We will lock this down to your specific domain later

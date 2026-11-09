@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" width="100%" height="100%" class="arch-svg-diagram" style="display: block; width: 100%; height: 100%;">
+  <defs>
+    <!-- Background Dot Matrix Grid -->
+    <pattern id="sre-grid-pattern" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.75" fill="rgba(255, 255, 255, 0.07)" />
+    </pattern>
+
+    <!-- Center Ambient Glow -->
+    <radialGradient id="sre-glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Node Surface Gradients -->
+    <linearGradient id="sre-node-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)" />
+    </linearGradient>
+
+    <!-- Flow Stream Gradient -->
+    <linearGradient id="sre-stream" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="40%" stop-color="#fb923c" />
+      <stop offset="70%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="sre-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 0.5 L 5 3 L 0 5.5 Z" fill="#38bdf8" />
+    </marker>
+    <marker id="sre-arrow-pass" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 0.5 L 5 3 L 0 5.5 Z" fill="#34d399" />
+    </marker>
+
+    <!-- Tile Drop Shadow -->
+    <filter id="sre-shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <style>
+      @keyframes sreDash {
+        from { stroke-dashoffset: 20; }
+        to { stroke-dashoffset: 0; }
+      }
+      .sre-stream-line {
+        stroke-dasharray: 5 4;
+        animation: sreDash 1.2s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base Canvas -->
+  <rect width="100%" height="100%" fill="#06070a" />
+  <rect width="100%" height="100%" fill="url(#sre-grid-pattern)" />
+  <rect width="100%" height="100%" fill="url(#sre-glow)" />
+
+  <!-- Diagram Title Header -->
+  <g opacity="0.8">
+    <text x="24" y="22" fill="rgba(255, 255, 255, 0.45)" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="600" letter-spacing="0.1em">STANDARDIZED SRE INCIDENT &amp; REMEDIATION LIFECYCLE</text>
+    <text x="616" y="22" text-anchor="end" fill="rgba(255, 255, 255, 0.3)" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="500">POSIX BASH · STRICT SET -EUO PIPEFAIL</text>
+    <line x1="24" y1="30" x2="616" y2="30" stroke="rgba(255, 255, 255, 0.06)" />
+  </g>
+
+  <!-- Flow Track Lines (Under nodes) -->
+  <g fill="none">
+    <!-- Step 1 to 2 -->
+    <path d="M 130 95 L 168 95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+    <path d="M 130 95 L 168 95" stroke="#fb7185" stroke-width="1.5" class="sre-stream-line" marker-end="url(#sre-arrow)" />
+
+    <!-- Step 2 to 3 -->
+    <path d="M 276 95 L 314 95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+    <path d="M 276 95 L 314 95" stroke="#fb923c" stroke-width="1.5" class="sre-stream-line" marker-end="url(#sre-arrow)" />
+
+    <!-- Step 3 to 4 -->
+    <path d="M 422 95 L 460 95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+    <path d="M 422 95 L 460 95" stroke="#34d399" stroke-width="1.5" class="sre-stream-line" marker-end="url(#sre-arrow-pass)" />
+  </g>
+
+  <!-- Flow Protocol / Action Badges -->
+  <g font-family="'JetBrains Mono', monospace" font-size="7" font-weight="600">
+    <rect x="135" y="88" width="28" height="14" rx="3" fill="#08090d" stroke="rgba(255, 255, 255, 0.18)" />
+    <text x="149" y="98" fill="#fb7185" text-anchor="middle">ALARM</text>
+
+    <rect x="281" y="88" width="28" height="14" rx="3" fill="#08090d" stroke="rgba(255, 255, 255, 0.18)" />
+    <text x="295" y="98" fill="#fb923c" text-anchor="middle">TRIAGE</text>
+
+    <rect x="427" y="88" width="28" height="14" rx="3" fill="#08090d" stroke="rgba(255, 255, 255, 0.18)" />
+    <text x="441" y="98" fill="#34d399" text-anchor="middle">EXEC</text>
+  </g>
+
+  <!-- ═════════ 4 STAGE NODES ═════════ -->
+
+  <!-- NODE 1: SYNTHETIC DRILL -->
+  <g transform="translate(24, 62)" filter="url(#sre-shadow)">
+    <rect width="106" height="66" rx="8" fill="url(#sre-node-bg)" stroke="rgba(255, 255, 255, 0.14)" />
+    <line x1="8" y1="0.5" x2="98" y2="0.5" stroke="rgba(244, 63, 94, 0.4)" stroke-width="1" />
+    
+    <g transform="translate(10, 10)">
+      <circle cx="8" cy="8" r="7" fill="none" stroke="#fb7185" stroke-width="1.3" />
+      <path d="M 8 4 L 8 8.5 M 8 11.5 L 8 12" stroke="#fb7185" stroke-width="1.3" stroke-linecap="round" />
+    </g>
+    <text x="32" y="19" fill="#ffffff" font-family="'Syne', -apple-system, sans-serif" font-size="10.5" font-weight="700">01. Inject</text>
+    <text x="32" y="30" fill="rgba(255, 255, 255, 0.5)" font-family="'JetBrains Mono', monospace" font-size="7.5">Chaos Trigger</text>
+
+    <line x1="10" y1="38" x2="96" y2="38" stroke="rgba(255, 255, 255, 0.08)" />
+    <text x="10" y="49" fill="rgba(255, 255, 255, 0.7)" font-family="'JetBrains Mono', monospace" font-size="7">Disk (94%) / OOM</text>
+    <text x="10" y="59" fill="#fb7185" font-family="'JetBrains Mono', monospace" font-size="7">Packet Drop (35%)</text>
+  </g>
+
+  <!-- NODE 2: OBSERVE & DIAGNOSE -->
+  <g transform="translate(170, 62)" filter="url(#sre-shadow)">
+    <rect width="106" height="66" rx="8" fill="url(#sre-node-bg)" stroke="rgba(255, 255, 255, 0.14)" />
+    <line x1="8" y1="0.5" x2="98" y2="0.5" stroke="rgba(251, 146, 60, 0.4)" stroke-width="1" />
+    
+    <g transform="translate(10, 10)">
+      <rect x="1" y="2" width="14" height="11" rx="2" fill="none" stroke="#fb923c" stroke-width="1.2" />
+      <path d="M 4 8 L 7 5 L 10 9 L 13 6" fill="none" stroke="#fb923c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="32" y="19" fill="#ffffff" font-family="'Syne', -apple-system, sans-serif" font-size="10.5" font-weight="700">02. Diagnose</text>
+    <text x="32" y="30" fill="rgba(255, 255, 255, 0.5)" font-family="'JetBrains Mono', monospace" font-size="7.5">Telemetry Triage</text>
+
+    <line x1="10" y1="38" x2="96" y2="38" stroke="rgba(255, 255, 255, 0.08)" />
+    <text x="10" y="49" fill="rgba(255, 255, 255, 0.7)" font-family="'JetBrains Mono', monospace" font-size="7">journalctl -xeu</text>
+    <text x="10" y="59" fill="#fb923c" font-family="'JetBrains Mono', monospace" font-size="7">systemd cgroups</text>
+  </g>
+
+  <!-- NODE 3: REMEDIATE -->
+  <g transform="translate(316, 62)" filter="url(#sre-shadow)">
+    <rect width="106" height="66" rx="8" fill="url(#sre-node-bg)" stroke="rgba(255, 255, 255, 0.14)" />
+    <line x1="8" y1="0.5" x2="98" y2="0.5" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
+    
+    <g transform="translate(10, 10)">
+      <polygon points="8,1 15,5 15,11 8,15 1,11 1,5" fill="none" stroke="#38bdf8" stroke-width="1.2" />
+      <path d="M 5 8 L 7.5 10.5 L 11 5.5" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="32" y="19" fill="#ffffff" font-family="'Syne', -apple-system, sans-serif" font-size="10.5" font-weight="700">03. Remediate</text>
+    <text x="32" y="30" fill="rgba(255, 255, 255, 0.5)" font-family="'JetBrains Mono', monospace" font-size="7.5">Idempotent Runbook</text>
+
+    <line x1="10" y1="38" x2="96" y2="38" stroke="rgba(255, 255, 255, 0.08)" />
+    <text x="10" y="49" fill="rgba(255, 255, 255, 0.7)" font-family="'JetBrains Mono', monospace" font-size="7">purge-spillover.sh</text>
+    <text x="10" y="59" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="7">Auto-Reset State</text>
+  </g>
+
+  <!-- NODE 4: VERIFY HEALTH -->
+  <g transform="translate(462, 62)" filter="url(#sre-shadow)">
+    <rect width="154" height="66" rx="8" fill="url(#sre-node-bg)" stroke="rgba(255, 255, 255, 0.14)" />
+    <line x1="8" y1="0.5" x2="146" y2="0.5" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1" />
+    
+    <g transform="translate(10, 10)">
+      <circle cx="8" cy="8" r="7" fill="none" stroke="#34d399" stroke-width="1.3" />
+      <path d="M 5 8 L 7.5 10.5 L 11 5.5" fill="none" stroke="#34d399" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="32" y="19" fill="#ffffff" font-family="'Syne', -apple-system, sans-serif" font-size="10.5" font-weight="700">04. Verify &amp; Pass</text>
+    <text x="32" y="30" fill="rgba(255, 255, 255, 0.5)" font-family="'JetBrains Mono', monospace" font-size="7.5">Zero Side-Effects</text>
+
+    <line x1="10" y1="38" x2="144" y2="38" stroke="rgba(255, 255, 255, 0.08)" />
+    <text x="10" y="49" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="7">Exit 0 · MTTR &lt; 30s</text>
+    <text x="10" y="59" fill="rgba(255, 255, 255, 0.7)" font-family="'JetBrains Mono', monospace" font-size="7">ShellCheck CI: 0 Errors</text>
+  </g>
+
+  <!-- Bottom Metric Badge Strip -->
+  <g transform="translate(24, 142)" font-family="'JetBrains Mono', monospace" font-size="7.5">
+    <text x="0" y="14" fill="rgba(255, 255, 255, 0.45)">BENCHMARKS:</text>
+    <text x="75" y="14" fill="#38bdf8">98.4% Manual MTTR Reduction</text>
+    <text x="260" y="14" fill="rgba(255, 255, 255, 0.3)">·</text>
+    <text x="275" y="14" fill="#34d399">0 Uncaught Pipeline Failures</text>
+    <text x="470" y="14" fill="rgba(255, 255, 255, 0.3)">·</text>
+    <text x="485" y="14" fill="#fb923c">100% Idempotent Replays</text>
+  </g>
+</svg>
