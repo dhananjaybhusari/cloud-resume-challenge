@@ -2471,9 +2471,16 @@ button {
 ══════════════════════════════════════════ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 48px;
   align-items: start;
+  width: 100%;
+}
+
+.contact-info,
+.contact-form-wrap {
+  min-width: 0;
+  width: 100%;
 }
 
 .contact-links {
@@ -2481,6 +2488,7 @@ button {
   flex-direction: column;
   gap: 14px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .contact-link-card {
@@ -2489,11 +2497,15 @@ button {
   align-items: center;
   gap: 16px;
   text-decoration: none;
+  width: 100%;
+  min-width: 0;
 }
 
 .cl-icon {
   width: 44px;
   height: 44px;
+  min-width: 44px;
+  flex-shrink: 0;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -2507,7 +2519,9 @@ button {
 }
 
 .cl-text {
-  flex-grow: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .cl-label {
@@ -2523,12 +2537,17 @@ button {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-primary);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cl-arrow {
   color: var(--text-muted);
   font-size: 12px;
   transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .contact-link-card:hover .cl-arrow {
@@ -2539,6 +2558,8 @@ button {
 .availability-card {
   padding: 24px;
   border-radius: var(--radius-lg);
+  width: 100%;
+  min-width: 0;
 }
 
 .avail-indicator {
@@ -2569,6 +2590,8 @@ button {
 .contact-form {
   padding: 34px;
   border-radius: var(--radius-xl);
+  width: 100%;
+  min-width: 0;
 }
 
 .contact-form h3 {
@@ -2969,7 +2992,8 @@ button {
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
   }
 
   .skills-bento {
@@ -3155,8 +3179,42 @@ button {
     justify-content: center;
   }
 
+  .contact-grid {
+    gap: 24px;
+    width: 100%;
+  }
+
+  .contact-links {
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .contact-link-card {
+    padding: 14px 16px;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .cl-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 15px;
+  }
+
+  .cl-value {
+    font-size: 13px;
+  }
+
+  .availability-card {
+    padding: 20px 16px;
+    width: 100%;
+  }
+
   .contact-form {
     padding: 24px 18px;
+    width: 100%;
   }
 
   .back-top {
@@ -3316,6 +3374,48 @@ button {
 
   .scroll-line {
     height: 14px;
+  }
+
+  /* Contact Section Ergonomics on Small Screens */
+  .contact-link-card {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .cl-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 14px;
+  }
+
+  .cl-value {
+    font-size: 12.5px;
+  }
+
+  .availability-card {
+    padding: 18px 14px;
+  }
+
+  .contact-form {
+    padding: 20px 14px;
+  }
+
+  .contact-form h3 {
+    font-size: 19px;
+    margin-bottom: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 13.5px;
+    border-radius: 12px;
   }
 }
 

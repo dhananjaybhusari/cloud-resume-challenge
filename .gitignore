@@ -1,3 +1,21 @@
-.terraform/
+# Terraform local and secret files
+**/.terraform/
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Artifacts
+terraform/lambda_function.zip

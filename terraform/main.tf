@@ -5,11 +5,19 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "dhananjay-portfolio-tf-state-2026"
+    key            = "prod/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-state-locks"
+    encrypt        = true
+  }
 }
 
 # 1. Set the AWS Region
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
 }
 
 # 2. Database: Create the DynamoDB Table
@@ -85,7 +93,9 @@ resource "aws_lambda_function" "api_handler" {
 
   environment {
     variables = {
-      TABLE_NAME = aws_dynamodb_table.visitor_count.name
+      TABLE_NAME         = aws_dynamodb_table.visitor_count.name
+      TELEGRAM_BOT_TOKEN = var.telegram_bot_token
+      TELEGRAM_CHAT_ID   = var.telegram_chat_id
     }
   }
 }

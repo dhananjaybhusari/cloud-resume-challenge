@@ -1,21 +1,21 @@
-# ☁️ Cloud Resume Challenge - AWS Serverless Architecture
+# Cloud Resume Challenge - AWS Serverless Architecture
 
 [![Live Website](https://img.shields.io/badge/Live-dhananjay.app-success?style=for-the-badge)](https://dhananjay.app)
 [![AWS](https://img.shields.io/badge/AWS-Serverless-FF9900?style=for-the-badge&logo=amazonaws)](https://aws.amazon.com/)
 [![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?style=for-the-badge&logo=terraform)](https://www.terraform.io/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?style=for-the-badge&logo=github-actions)](https://github.com/features/actions)
 
-## 📖 Overview
+## Overview
 This repository contains the complete source code and infrastructure configuration for my implementation of the **Cloud Resume Challenge**. 
 
 Instead of deploying via the AWS Console, this project was built entirely using **Infrastructure as Code (IaC)** with Terraform. The architecture represents a full-stack, globally distributed serverless application, complete with a fully automated CI/CD pipeline.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 <p align="center">
-  <img src="frontend/assets/images/architecture.svg" alt="Architecture" width="350"/>
+  <img src="frontend/assets/images/architecture.svg" alt="AWS Serverless Resume Architecture" width="100%"/>
 </p>
 
 ### **How it Works**
@@ -28,7 +28,7 @@ Instead of deploying via the AWS Console, this project was built entirely using 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Category | Technology | Purpose |
 |----------|------------|---------|
@@ -41,7 +41,7 @@ Instead of deploying via the AWS Console, this project was built entirely using 
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 cloud-resume-challenge/
@@ -69,7 +69,7 @@ cloud-resume-challenge/
 
 ---
 
-## 🚀 Deployment Pipeline (CI/CD)
+## Deployment Pipeline (CI/CD)
 
 This project uses **Continuous Deployment**. Any push to the `main` branch affecting the `frontend/` directory triggers a GitHub Actions workflow that:
 1. Provisions an Ubuntu runner.
@@ -85,7 +85,7 @@ This project uses **Continuous Deployment**. Any push to the `main` branch affec
 
 ---
 
-## 👨‍💻 Author
+## Author
 **Dhananjay Bhusari** *AWS Certified Cloud Practitioner | Cloud Infrastructure & DevOps*
 
 * 🌐 **Portfolio:** [dhananjay.app](https://dhananjay.app)
